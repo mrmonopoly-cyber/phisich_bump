@@ -1,13 +1,10 @@
 package com.mycompany.phisics_simulation;
 
-import java.util.function.BiPredicate;
-
-public class Corp {
+public final class Corp {
     
-    private Position position = new Position();
-    private Position destination = new Position();
+    private final Position position = new Position();
+    private final Position destination = new Position();
     private int velocity;
-    private BiPredicate<Position,Position> verification = (pos1,pos2) -> ( (pos1.getX() == pos2.getX()) && (pos1.getY() == pos2.getY()) );
                                                                      
     /*
     COSTRUCTOR
@@ -34,11 +31,7 @@ public class Corp {
     RETURN if the corp is moving 
     */
     protected boolean isMoving(){
-        if(this.velocity>0){
-            return true;
-        }else{
-            return false;
-        }
+        return this.velocity>0;
     }
     
     /*
