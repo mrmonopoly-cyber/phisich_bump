@@ -67,7 +67,7 @@ public class Screen extends JPanel{
     CREATE a new window
     @param screen = object with the info of window
     */
-    private JFrame createWindow(Screen screen,Mouse mouse){
+    private void createWindow(Screen screen,Mouse mouse){
         JFrame window = new JFrame();
         window.setSize(400,400);
         window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -76,10 +76,7 @@ public class Screen extends JPanel{
         window.getContentPane().add(screen);
         window.getContentPane().addMouseListener(mouse);
         window.pack();
-        
-        
-        return window;
-    }
+        }
     
     /*
     CREATE a square were the corps are
@@ -88,9 +85,9 @@ public class Screen extends JPanel{
     */
     private Screen createScreen(Info inf){
         Screen screen = new Screen();
-        Board tav = inf.getBoard();
+        Board board = inf.getBoard();
         
-        screen.changeBoard(tav);
+        screen.changeBoard(board);
         screen.repaint();
          
         return screen;
@@ -133,33 +130,26 @@ public class Screen extends JPanel{
         int y = current.getY();
         
         switch(dir){
-            case RIGHT :
-                x++;
-                break;
-            case LEFT :
-                x--;
-                break;
-            case DOWN :
-                y++;
-                break;
-            case UP :
-                y--;
-                break;
-            case RIGHT_DOWN :
+            case RIGHT -> x++;
+            case LEFT -> x--;
+            case DOWN -> y++;
+            case UP -> y--;
+            case RIGHT_DOWN -> {
                 x++;
                 y++;
-                break;
-            case RIGHT_UP :
+            }
+            case RIGHT_UP -> {
                 x++;
                 y--;
-                break;
-            case LEFT_DOWN :
+            }
+            case LEFT_DOWN -> {
                 x--;
                 y++;
-                break;
-            default :
+            }
+            default -> {
                 x--;
                 y--;
+            }
         }
         Position nextPos = new Position(x,y);
         
@@ -229,9 +219,7 @@ public class Screen extends JPanel{
         
         Screen screen = trash.createScreen(inf);
         Mouse mouse = trash.createMouse(inf);
-        JFrame window = trash.createWindow(screen,mouse);
-        
-        
+        trash.createWindow(screen,mouse);
     }
     
     /*
@@ -278,7 +266,7 @@ public class Screen extends JPanel{
         Board board = inf.getBoard();
         Position current = corp.position();
         Position ipotetic = nextPosition(corp);
-        //board.remove(current);
+        board.remove(current);
                    
         int x = current.getX();
         int y = current.getY();
