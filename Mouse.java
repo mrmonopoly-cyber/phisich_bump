@@ -17,7 +17,7 @@ private enum Status{
     private Info inf;
     private Status stat = Status.NOTCLICKED;
     private BiPredicate<Integer,Integer> verification; 
-    private Position corpPosition = new Position();
+    private final Position corpPosition = new Position();
     
     /*
     OBTAIN click of the mouse and modify the currently window based on the click:
@@ -102,11 +102,7 @@ private enum Status{
     private boolean verifyPut(int x,int y){
         int a=x;
         int b=y;
-        if(verification.test(a,b) ){
-                return true;
-            }else{
-                return false; 
-            }
+    return verification.test(a,b);
     }
     
     /*
@@ -116,7 +112,6 @@ private enum Status{
     @param trash = object used only to call methods
     */
     private void PutOrSave(int x,int y,Info inf){
-        Screen trash = new Screen();
         Board board = inf.getBoard();
         if(board.verifyPos(corpPosition)){
             stat = Status.CLICKED;
@@ -167,3 +162,4 @@ private enum Status{
     }
     
 }
+
