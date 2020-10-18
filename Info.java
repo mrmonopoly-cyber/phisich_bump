@@ -6,9 +6,9 @@ import javax.swing.JFrame;
 
 public class Info {
     
-    private ArrayList<Corp> list;           //lista dei corpi nella board
+    private final ArrayList<Corp> list;           //lista dei corpi nella board
     private Board tav;                      //object with all position of the square
-    private int dim ;                      //dimension of square
+    private int dim ;                       //dimension of square
     private JFrame window;
     
     /*
@@ -71,22 +71,6 @@ public class Info {
     */
     protected JFrame getWindow(){
         return this.window;
-    }
-    
-    /*
-    RETURN the index or the corp in the list of the corp or RETURN -56
-    @param corp = corp to search
-    */
-    private int corpIndex(Corp corp){                                            //orribile da sistemare ripetizione di codice
-        for(int index =0;index<list.size();index++){
-            Corp current = list.get(index);
-            Position currentPos = current.position();
-            
-            if(currentPos.equals(corp.position())){
-                return index;
-            }
-        }
-        return -56;
     }
     
     /*
