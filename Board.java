@@ -1,9 +1,5 @@
 package com.mycompany.phisics_simulation;
 
-
-
-
-
 public class Board{
 
     private boolean[][] board;
@@ -57,11 +53,7 @@ public class Board{
         int x = pos.getX();
         int y = pos.getY();
         
-        if(board[x][y]){
-            return true;
-        }else{
-            return false;
-        }
+        return board[x][y];
     }
     
     /*
